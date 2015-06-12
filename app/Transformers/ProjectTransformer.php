@@ -18,7 +18,8 @@ class ProjectTransformer extends TransformerAbstract {
             'completed_at' => $project->completed_at,
             'repository'   => $project->repository,
             'url'          => $project->url,
-            'status'       => $project->status->name
+            'status'       => $project->status->name,
+            'updated_at'   => $project->updated_at->format('F d, Y')
         ];
     }
 

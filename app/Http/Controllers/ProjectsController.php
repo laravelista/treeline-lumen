@@ -39,7 +39,7 @@ class ProjectsController extends ApiController {
 
         $data = $fractal->createData($collection)->toArray();
 
-        return $this->respond($data);
+        return $this->respondWithCORS($data);
     }
 
     /**

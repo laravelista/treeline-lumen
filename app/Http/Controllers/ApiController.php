@@ -103,4 +103,19 @@ class ApiController extends Controller {
         ]);
     }
 
+    public function respondWithCORS($data)
+    {
+        return $this->respond($data, $this->setCORSHeaders());
+    }
+
+    private function setCORSHeaders()
+    {
+        $header['Access-Control-Allow-Origin'] = '*';
+        $header['Allow'] = 'GET, POST, OPTIONS';
+        $header['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, X-Request-With';
+        $header['Access-Control-Allow-Credentials'] = 'true';
+
+        return $header;
+    }
+
 }
