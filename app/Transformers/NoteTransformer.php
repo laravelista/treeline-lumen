@@ -15,8 +15,7 @@ class NoteTransformer extends TransformerAbstract {
         return [
             'stamp'       => $note->stamp->format('d/m/Y'),
             'title'       => $note->title,
-            'description' => $note->description,
-            'links'       => new Collection($note->links, new LinkTransformer())
+            'description' => $note->description
         ];
     }
 
