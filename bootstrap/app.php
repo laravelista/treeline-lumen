@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-Dotenv::load(__DIR__.'/../');
+Dotenv::load(__DIR__ . '/../');
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ Dotenv::load(__DIR__.'/../');
 */
 
 $app = new Laravel\Lumen\Application(
-	realpath(__DIR__.'/../')
+    realpath(__DIR__ . '/../')
 );
 
 $app->withFacades();
@@ -78,7 +78,7 @@ $app->singleton(
 |
 */
 
-// $app->register('App\Providers\AppServiceProvider');
+$app->register('Tymon\JWTAuth\Providers\JWTAuthServiceProvider');
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +91,6 @@ $app->singleton(
 |
 */
 
-require __DIR__.'/../app/Http/routes.php';
+require __DIR__ . '/../app/Http/routes.php';
 
 return $app;
