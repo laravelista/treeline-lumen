@@ -16,11 +16,16 @@ $app->get('/', function () use ($app)
     return $app->welcome();
 });
 
+$app->group(['prefix' => 'projects', 'middleware' => 'jwt.auth'], function($app) {
+    $app->post('/', 'App\Http\Controllers\ProjectsController@store');
+    $app->put('/{projectId}', 'App\Http\Controllers\ProjectsController@update');
+    $app->delete('/{projectId}', 'App\Http\Controllers\ProjectsController@destroy');
+});
+
 $app->group(['prefix' => 'projects'], function ($app)
 {
     $app->get('/', 'App\Http\Controllers\ProjectsController@index');
-    $app->post('/', 'App\Http\Controllers\ProjectsController@store');
     $app->get('/{projectId}', 'App\Http\Controllers\ProjectsController@show');
-    $app->put('/{projectId}', 'App\Http\Controllers\ProjectsController@update');
-    $app->delete('{projectId}', 'App\Http\Controllers\ProjectsController@destroy');
 });
+
+$app->post('auth/login', 'App\Http\Controllers\Auth\AuthController@postLogin');
