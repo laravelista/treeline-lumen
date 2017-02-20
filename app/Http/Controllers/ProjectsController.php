@@ -33,7 +33,7 @@ class ProjectsController extends ApiController {
      */
     public function index(Manager $fractal, ProjectTransformer $projectTransformer)
     {
-        $projects = $this->project->with(['notes.links'])->get();
+        $projects = $this->project->with(['notes.links', 'status'])->get();
 
         $collection = new Collection($projects, $projectTransformer);
 
